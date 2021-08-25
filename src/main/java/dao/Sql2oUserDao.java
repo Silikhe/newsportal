@@ -1,15 +1,17 @@
 package dao;
 
+import models.News;
 import models.User;
 import org.sql2o.Connection;
+import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sql2oUserDao {
-    public Sql2oUserDao(){}
 
+public class Sql2oUserDao implements UserDao {
+    public Sql2oUserDao(){}
 
     @Override
     public void add(User user) {
@@ -24,7 +26,6 @@ public class Sql2oUserDao {
             System.out.println("User not added: "+ex);
         }
     }
-
 
     @Override
     public User findById(int id) {
@@ -66,7 +67,7 @@ public class Sql2oUserDao {
 
     @Override
     public List<News> myNews(int userId){
-        List<News> newsList = new ArrayList<>();
+        List<   News> newsList = new ArrayList<>();
         String jointSql = "SELECT newsid from departments_news WHERE userid = :userid;";
         try (Connection con = DB.sql2o.open()) {
             List<Integer> allIds = con.createQuery(jointSql)
@@ -85,4 +86,5 @@ public class Sql2oUserDao {
 
         return newsList;
     }
+
 }
