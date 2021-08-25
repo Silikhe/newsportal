@@ -11,7 +11,6 @@ public class SQL2oSitemapDao {
     public SQL2oSitemapDao() {
     }
 
-    @Override
     public void add(Sitemap sitemap) {
         String sql = "INSERT INTO users (id,descr,path,) VALUES (:id,:descr,:path);";
         try (Connection con = DB.sql2o.open()) {
@@ -34,4 +33,6 @@ public class SQL2oSitemapDao {
     }
 
 
+//    public Sitemap findById(int id) {
+//    }
 }

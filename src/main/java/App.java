@@ -37,6 +37,13 @@ public class App {
             return gson.toJson(department);
         });
 
+//        post("/sitemap/new","application/json",(request, response) -> {
+//            Sitemap sitemap = gson.fromJson(request.body(),Sitemap.class);
+//            sitemapDao.add(sitemap);
+//            response.status(201);
+//            return gson.toJson(sitemap);
+//        });
+
         get("/departments/:deptId/details","application/json",(request, response) -> {
             int deptId = Integer.parseInt(request.params("deptId"));
             return gson.toJson(deptDao.findById(deptId));
@@ -162,6 +169,8 @@ public class App {
         get("/sitemap","application/json",(request, response) ->{
             return gson.toJson(sitemapDao.allPaths());
         });
+
+
 
         //filter
         after((req, res) -> res.type("application/json"));
