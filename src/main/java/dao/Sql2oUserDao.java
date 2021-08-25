@@ -22,4 +22,14 @@ public class Sql2oUserDao {
         }
     }
 
+
+    @Override
+    public User findById(int id) {
+        String sql = "SELECT * from users WHERE id=:id;";
+        try (Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(User.class);
+        }
+    }
 }
