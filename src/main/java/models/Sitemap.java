@@ -3,12 +3,7 @@ package models;
 public class Sitemap {
     private String descr;
     private String path;
-    private int id;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    private String id;
 
     public Sitemap(String descr, String path) {
         this.descr = descr;
@@ -23,7 +18,7 @@ public class Sitemap {
         return path;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }
