@@ -27,18 +27,20 @@ CREATE TABLE departments_news (id serial primary key, deptid int, newsid int, us
 CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 ```
 
-##### Java
-+ Run `java --version` to check which version of java you have installed in your device. If you have java installed, you should see an output slightly similar to the one below...  
-  _**openjdk 10.0.2 2018-07-17**_  
-  _**OpenJDK Runtime Environment (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.4)**_  
-  ... then you need to install java by running this : `sudo apt install default-jre`
+###### Routes
++ Use the following paths.
++ `/users` Lists all the users
++ `/departments` Gets all the departments
++ `/departments/new` Gets an individual department using id
++ `/departments/:deptId/details` Post a new department
++ `/departments/:deptId/users/new` Creates new department from specific user
++ `/departments/:deptId/users/:userId/details"` Users from individual department
++ `/departments/:deptId/users/:userId/news` Users from individual department
++ `/departments/:deptId/users/:userId/news/new"` A user can post news
++ `/departments/:deptId/news` Get news from sspecific departmenr
++ `/users/:userId/news` Get news from specific use news
++ `/news` Get all news news
 
-+ Clone the repository into a desired folder by running the following link in your terminal: `https://github.com/silikhe/news-portal.git`
-
-###### (Running the app)
-+ Build and Run the project.
-+ Open your browser or postman (preferred) in order to interact with the API
-+ Use the path `/sitemap` in the url when running the project to get a list of all paths in a summarized form
 
 
 ## Live Site
