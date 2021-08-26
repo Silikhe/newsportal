@@ -44,6 +44,18 @@ public class App {
 //            return gson.toJson(sitemap);
 //        });
 
+        get("/departments/:deptId/users/:userId/details","application/json",(request, response) -> {
+            int userId = Integer.parseInt(request.params("userId"));
+            User foundUser = userDao.findById(userId);
+
+            if (foundUser != null) {
+                return gson.toJson(foundUser);
+            }
+            else {
+                return "{\"Error 404!\":\"User not found\"}";
+            }
+        });
+
         get("/departments/:deptId/details","application/json",(request, response) -> {
             int deptId = Integer.parseInt(request.params("deptId"));
             return gson.toJson(deptDao.findById(deptId));
@@ -70,17 +82,7 @@ public class App {
             return gson.toJson(deptDao.allDepartmentEmployees(deptId));
         });
 
-        get("/departments/:deptId/users/:userId/details","application/json",(request, response) -> {
-            int userId = Integer.parseInt(request.params("userId"));
-            User foundUser = userDao.findById(userId);
 
-            if (foundUser != null) {
-                return gson.toJson(foundUser);
-            }
-            else {
-                return "{\"Error 404!\":\"User not found\"}";
-            }
-        });
 
         get("/departments/:deptId/users/:userId/news","application/json",(request, response) -> {
             int userId = Integer.parseInt(request.params("userId"));
